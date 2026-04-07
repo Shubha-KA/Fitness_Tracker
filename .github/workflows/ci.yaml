@@ -1,13 +1,13 @@
 name: CI Pipeline
 
 on:
-pull_request:
-branches:
-- main
+  pull_request:
+    branches:
+    - main
 
 jobs:
-build-test-docker:
-runs-on: ubuntu-latest
+  build-test-docker:
+    runs-on: ubuntu-latest
 
 
 steps:
