@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: userprofile-blue-green
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Shubha-KA/Fitness_Tracker.git
+    targetRevision: main
+    path: Fitness_Chart
+    helm:
+      values: |
+        userprofile:
+          activeVersion: blue
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: fitness-ns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
